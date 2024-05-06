@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework_3
 {
-    public class User
+    public sealed class User
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,17 +20,17 @@ namespace Homework_3
             Age = age;
         }
 
-        public void ToString()
+        public override string ToString()
         {
             if (Age <= 10) 
             {
                 Console.Clear();
-                Console.WriteLine($"Hello, I am a baby!");
+                return "Hello, I am a baby!";
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine($"First name: {FirstName}\nLast name: {LastName} \nAge: {Age} y.o.\nGender: {Gender}");
+               return $"First name: {FirstName}\nLast name: {LastName} \nAge: {Age} y.o.\nGender: {Gender}";
             }
         }
     }
