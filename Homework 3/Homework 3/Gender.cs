@@ -8,8 +8,8 @@ namespace Homework_3
 {
     public enum Gender
     {
-        Male = 0,
-        Female = 1,
-        Unknown = 2
+        Male,
+        Female,
+        Unknown
     }
 }
