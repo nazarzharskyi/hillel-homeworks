@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Homework_3
+﻿namespace Homework_3
 {
     internal class Program
     {
@@ -19,7 +17,7 @@ namespace Homework_3
                 {
                     Console.WriteLine(ex.Message);
                 }
-                if (age != null && age>=0)
+                if (age != null && age>=0 && age<=100)
                 {
                     user1 = new User(age);
                     Console.Clear();
@@ -40,40 +38,21 @@ namespace Homework_3
             user1.LastName = lastName;
 
 
-            int gender = 0;
-            bool isNotEmpty = true;
-            while (isNotEmpty)
+            while (true)
             {
                 Console.Write("1. Male \n2. Female \n3. Unknown \nChoose your gender: ");
-                try
+                string genderInput = Console.ReadLine();
+
+                if (GenderValidator.TryParseGender(genderInput, out Gender gender))
                 {
-                    gender = Convert.ToInt32(Console.ReadLine());
+                    user1.Gender = gender;
+                    Console.Clear();
+                    break;
                 }
-                catch(Exception e)
+                else
                 {
-                    Console.WriteLine(e.Message);
-                }
-                switch(gender)
-                {
-                    case 1:
-                        user1.Gender=Gender.Male;
-                        isNotEmpty = false;
-                        Console.Clear();
-                        break;
-                    case 2:
-                        user1.Gender = Gender.Female;
-                        isNotEmpty = false;
-                        Console.Clear();
-                        break;
-                    case 3:
-                        user1.Gender = Gender.Unknown;
-                        isNotEmpty = false;
-                        Console.Clear();
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("You`ve entered something incorrect, try again");
-                        break;
+                    Console.Clear();
+                    Console.WriteLine("You've entered something incorrect, try again");
                 }
             }
             Console.WriteLine(user1.ToString());
@@ -102,7 +81,8 @@ namespace Homework_3
                         break;
                     }
                 }
-                if (input != null && !isDigit)
+                bool isNotEmpty = string.IsNullOrEmpty(input);
+                if (!isNotEmpty && !isDigit)
                 {
                     Console.Clear();
                     return input;

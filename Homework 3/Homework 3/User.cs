@@ -24,12 +24,10 @@ namespace Homework_3
         {
             if (Age <= 10) 
             {
-                Console.Clear();
                 return "Hello, I am a baby!";
             }
             else
             {
-                Console.Clear();
                return $"First name: {FirstName}\nLast name: {LastName} \nAge: {Age} y.o.\nGender: {Gender}";
             }
         }
